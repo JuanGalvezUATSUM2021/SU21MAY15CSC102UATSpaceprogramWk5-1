@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--UAT Space Page Mission Control Operator Login Page
+    Written By: Juan Galvez
+    juagalve@uat.edu
+    29MAY2021 Wk 3-3-->
+<html>
+
+<head>
+    <script src="loginCode.js"></script>
+    <title>
+        UAT Space Program Login Page
+    </title>
+    <!--This is the Title of the login page-->
+</head>
+
+<body>
+    <h1>
+        Welcome to the UAT Space Program Login Page, Please Login.
+        <!--This will give the status of the login creds-->
+    </h1>
+    <p id="loginStatus">
+        Status of Login...
+        <!--This area gives you the input boxes to put in your qualifying creds-->
+    </p>
+    <form id="creditSubmit" onsubmit="return false">
+    First Name:     <input type="text" id="fName" /><br>
+    <!--Box for first name-->
+    Last Name:      <input type="text" id="lName" /><br>
+    <!--Box for last name-->
+    Badge Number:   <input type="number" id="badgeID" /><br>
+    <input type="submit" onclick="credentialValidation();" />
+    <!--Box for Badge ID Number-->
+    </form>
+</body>
+
+</html>

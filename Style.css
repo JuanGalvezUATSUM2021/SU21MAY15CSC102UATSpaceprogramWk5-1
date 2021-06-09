@@ -1,0 +1,12 @@
+body{
+   background-image: linear-gradient(360deg, white, #050e61); 
+}
+
+.button {
+   width: 100px;
+   height: 30px;
+   background-color: whitesmoke;
+   border-radius: 180px;
+   border-color: orangered;
+   /*Changed Button class for UAT Space Program Page*/
+}

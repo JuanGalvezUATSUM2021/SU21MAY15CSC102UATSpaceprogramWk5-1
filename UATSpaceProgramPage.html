@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<!--UAT Space Program Page
+    Written By: Juan Galvez
+    juagalve@uat.edu
+    12MAY2021 Wk 1-1-->
+<!--Space Vacation to the Galactic Star Casino-->
+<!--Have you ever wanted an out of this world Experience?
+        Have you ever want to hang out and play among the stars (not the human kind)?
+        Please sit back, relax, and enjoy your journey to the stars. On our journey to the Galactic Star Casino, we will be passing through history:
+        the history of space exploration where the first man in space has journeyed, where the first man to step foot on the moon went through,
+        where some of you are making your own history by making your first trip into space, the final frontier.
+         Please enjoy the sight of not only space but also the sights and sounds of the Galactic Star Casino as slot machines are spinning and people are screaming
+        with joy and excitement of their wins. While you are here, make sure you hit our feature game The Galactic Star Craps Game where you can win big and be the star of the casino.-->
+<html>
+
+<head>
+    <!--Wk 1-2 Asignment -->
+    <link href="Style.css" rel="stylesheet" type="text/css" />
+    <script src="Code.js"></script>
+    <script src="dataLoader-1.js"></script>
+    <title>
+        Juan Galvez's Student UAT Space Page
+    </title>
+</head>
+
+<body>
+    <!--This is need for the dom addition-->
+    <script>
+        //created some needed variables
+        var theTime = new Date();
+        var tempTime = new Date();
+        var time_interval = 5000;
+        var last_iteration = 0;
+        var running = true;
+        var index = 0;
+        var timer;
+
+        //this gets data for out table
+        var data = getData();
+
+        //this is the data from our dataLoader() to our table
+        function updateDisplay(){
+            theTime = new Date();
+
+            //This will Fill in the Table with appropriate data
+            var timeRead = data[index].time_seconds;
+            console.log("made it here");
+            if(timeRead >= 10){
+                //This will Fill in the data for Time Elapsed
+                document.getElementById("data").rows["seconds"].innerHTML = dataRow("Time Elapsed:", data[index].time_seconds, "seconds");
+                //This will Fill in the data for Latitude
+                document.getElementById("data").rows["latitude"].innerHTML = dataRow("Latitude:", data[index].latitude, " ");
+                //This will Fill in the data for Longitude
+                document.getElementById("data").rows["longitude"].innerHTML = dataRow("Longitude:", data[index].longitude, " ");
+                //This will Fill in the data for GPS Alitude
+                document.getElementById("data").rows["gps_altitude"].innerHTML = dataRow("GPS Altitude:", data[index].gps_altitude, " ");
+                //This will Fill in the data for BMP Sensor Altitude
+                document.getElementById("data").rows["bmpSensor_altitude"].innerHTML = dataRow("BMP Sensor Altitude:", data[index].bmpSensor_altitude, " ");
+                //This will Fill in the data for BMP Sensor Pressure
+                document.getElementById("data").rows["bmpSensor_pressure"].innerHTML = dataRow("BMP Sensor Pressure:", data[index].bmpSensor_pressure, " ");
+                //This will Fill in the data for BMP Sensor Tempature
+                document.getElementById("data").rows["bmpSensor_temp"].innerHTML = dataRow("BMP Sensor Tempature:", data[index].bmpSensor_temp, " ");
+                //This will Fill in the data for Digital Sensor Temperature
+                document.getElementById("data").rows["digitalSensor_temp"].innerHTML = dataRow("Digital Sensor Temperature:", data[index].digSensor_temp, " ");
+                //This will Fill in the data for CSS Sensor Temperature
+                document.getElementById("data").rows["cssSensor_temp"].innerHTML = dataRow("CSS Sensor Temperature:", data[index].cssSensor_temp, " ");
+                //This will Fill in the data for CSS Sensor eCO2
+                document.getElementById("data").rows["cssSensor_eCO2"].innerHTML = dataRow("CSS Sensor eCO2:", data[index].cssSensor_eCO2, " ");
+                //This will Fill in the data for CSS Sensor TVOC
+                document.getElementById("data").rows["cssSensor_TVOC"].innerHTML = dataRow("CSS Sensor TVOC:", data[index].cssSensor_TVOC, " ");
+                //This will Fill in the data for UV
+                document.getElementById("data").rows["UV"].innerHTML = dataRow("UV:", data[index]. UV, " ");
+                //This will Fill in the data for Accel X
+                document.getElementById("data").rows["accelX"].innerHTML = dataRow("Accel X:", data[index].accelX, " ");
+                //This will Fill in the data for Accel Y
+                document.getElementById("data").rows["accelY"].innerHTML = dataRow("Accel Y:", data[index].accelY, " ");
+                //This will Fill in the data for Accel Z
+                document.getElementById("data").rows["accelZ"].innerHTML = dataRow("Accel Z:", data[index].accelZ, " ");
+                //This will Fill in the data for Magnetic X
+                document.getElementById("data").rows["magneticX"].innerHTML = dataRow("Magnetic X:", data[index].magneticX, " ");
+                //This will Fill in the data for Magnetic Y
+                document.getElementById("data").rows["magneticY"].innerHTML = dataRow("Magnetic Y:", data[index].magneticY, " ");
+                //This will Fill in the data for Magnetic Z
+                document.getElementById("data").rows["magneticZ"].innerHTML = dataRow("Magnetic Z:", data[index].magneticZ, " ");
+                //This will Fill in the data for Gyro X
+                document.getElementById("data").rows["gyroX"].innerHTML = dataRow("Gyro X:", data[index].gyroX, " ");
+                //This will Fill in the data for Gyro Y
+                document.getElementById("data").rows["gyroY"].innerHTML = dataRow("Gyro Y:", data[index].gyroY, " ");
+                //This will Fill in the data for Gyro Z
+                document.getElementById("data").rows["gyroZ"].innerHTML = dataRow("Gyro Z:", data[index].gyroZ, " ");
+            }
+            //This will allow up to 500 by adding 1 to it if less than 500
+            if(index < 500){
+                index++;
+                //this will reset to 0 at 500
+            } else {
+                index = 0;
+            }
+        }
+    </script>
+
+
+    <!--creating a table to allow the h1 title and the UATspacelogo jpg to be side by side-->
+    <table>
+        <td><img src="UATspaceLogo-2 (1).jpg"></td>
+        <td>
+            <h1>
+                UAT Space Program
+            </h1>
+        </td>
+    </table>
+    <!--Created Table box size for the Event Driven Programming - Buttons information-->
+    <table border="2" width="75%" id="data">
+        <col style="width: 35%;">
+        <col style="width: 35%;">
+        <thead>
+            <tr style="font-family: fantasy;"></tr>
+            <th>Data Type</th>
+            <th>Reading</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="seconds"></tr>
+            <!--this puts the Data Type and Reading information under their appropriate coulumns-->
+            <tr id="latitude"></tr>
+            <!--this puts the latitude Data Type and Reading information under their appropriate coulumns-->
+            <tr id="longitude"></tr>
+            <!--this puts the longitude Data Type and Reading information under their appropriate coulumns-->
+            <tr id="gps_altitude"></tr>
+            <!--this puts the gps altitude Data Type and Reading information under their appropriate coulumns-->
+            <tr id="bmpSensor_altitude"></tr>
+            <!--this puts the BMP Sensor Data Type and Reading information under their appropriate coulumns-->
+            <tr id="bmpSensor_pressure"></tr>
+            <!--this puts the BMP Sensor Pressure Data Type and Reading information under their appropriate coulumns-->
+            <tr id="bmpSensor_temp"></tr>
+            <!--this puts the BMP Sensor Temperature Data Type and Reading information under their appropriate coulumns-->
+            <tr id="digitalSensor_temp"></tr>
+            <!--this puts the Digital Sensor Temperature Data Type and Reading information under their appropriate coulumns-->
+            <tr id="cssSensor_temp"></tr>
+            <!--this puts the CSS Sensor Temperature Data Type and Reading information under their appropriate coulumns-->
+            <tr id="cssSensor_eCO2"></tr>
+            <!--this puts the CSS Sensor eCO2 Data Type and Reading information under their appropriate coulumns-->
+            <tr id="cssSensor_TVOC"></tr>
+            <!--this puts the CSS Sensor TVOC Data Type and Reading information under their appropriate coulumns-->
+            <tr id="UV"></tr>
+            <!--this puts the UV Data Type and Reading information under their appropriate coulumns-->
+            <tr id="accelX"></tr>
+            <!--this puts the Accel X Data Type and Reading information under their appropriate coulumns-->
+            <tr id="accelY"></tr>
+            <!--this puts the Accel Y Data Type and Reading information under their appropriate coulumns-->
+            <tr id="accelZ"></tr>
+            <!--this puts the Accel Z Data Type and Reading information under their appropriate coulumns-->
+            <tr id="magneticX"></tr>
+            <!--this puts the Magnetic X Data Type and Reading information under their appropriate coulumns-->
+            <tr id="magneticY"></tr>
+            <!--this puts the Magnetic Y Data Type and Reading information under their appropriate coulumns-->
+            <tr id="magneticZ"></tr>
+            <!--this puts the Magnetic Z Data Type and Reading information under their appropriate coulumns-->
+            <tr id="gyroX"></tr>
+            <!--this puts the Gyro X Data Type and Reading information under their appropriate coulumns-->
+            <tr id="gyroY"></tr>
+            <!--this puts the Gyro Y Data Type and Reading information under their appropriate coulumns-->
+            <tr id="gyroZ"></tr>
+            <!--this puts the Gyro Z Data Type and Reading information under their appropriate coulumns-->
+        </tbody>
+    </table>
+    <br>
+    <p id="countdowntimer">Countdown Status...</p>
+    <!--Creating an effeciency loop button for countdown timer change from Wk1-2-->
+    <!-- Changed Button Class for EfficientCountdownTimer in 3-1-->
+    <!--Added button id to start button to give the button a js for the html for the Wk4-1 Event Driven Programming-Buttons assignment-->
+    <button class="button" id="startButton" onclick="start();">Start</button>
+    <!--Added button id to stop button to give the button a js for the html for the Wk4-1 Event Driven Programming-Buttons assignment-->
+    <button class="button" id="stopButton" onclick="stop();" >Stop</button>
+    <br>
+    <br>
+    <!--Adding a button to our UAT Space Program Page to play sound-->
+    <button class="button" onclick="playStation();">Play Sound</button><br>
+    <script>
+        //Got rid of the alert because it was only need for the first week
+        //alert("Test of the Alert function");
+    </script>
+
+    <!--Space for the Start of my Galactic Star Casino Craps Game-->
+    <br>
+    <br>
+    <!--Welcome Banner for the Space Casino-->
+    <h1>
+        Welcome to the Galactic Star Casino
+    </h1>
+    <h2>
+        Enjoy playing among the Stars!!!
+    </h2>
+    <br>
+    <!--Banner for Craps Game-->
+    <h3>
+        Play Galactic Star Casino Craps Game!
+    </h3>
+    <!--Created elements for the Craps Game Dice and Dice Results-->
+    <div id="Die1Results">Die1 Status...</div><br>
+    <div id="Die2Results">Die2 Status...</div><br>
+    <div id="sumResults">Sum Status...</div><br>
+    <div id="crapsGameResults">Craps Game Status...</div><br>
+    <!--Creating buttons that will allow us to play the Craps Game-->
+    <button class="button" onclick="playgameofCraps();">Roll Dice</button><br>
+    <br>
+    <br>
+   
+
+</body>
+
+</html>
